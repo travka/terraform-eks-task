@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-pod
+spec:
+  containers:
+    - name: sample-container
+      image: amazonlinux:latest
+      command: ["sleep", "3600"]
+  automountServiceAccountToken: true
+  serviceAccountName: my-service-account
+  securityContext:
+    runAsUser: 1000  # Example UID that matches the IAM role's user ID
+
